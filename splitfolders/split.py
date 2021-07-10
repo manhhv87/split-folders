@@ -198,8 +198,8 @@ def split_class_dir_ratio(class_dir, output, ratio, seed, prog_bar, group_prefix
     files = setup_files(class_dir, seed, group_prefix)
 
     # the data was shuffled already
-    split_train_idx = int(ratio[0] * len(files))
-    split_val_idx = split_train_idx + int(ratio[1] * len(files))
+    split_train_idx = round(ratio[0] * len(files))
+    split_val_idx = split_train_idx + round(ratio[1] * len(files))
 
     li = split_files(files, split_train_idx, split_val_idx, len(ratio) == 3)
     copy_files(li, class_dir, output, prog_bar)
